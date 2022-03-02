@@ -1,4 +1,5 @@
 from datetime import datetime
+import email
 from os import access
 from typing import Optional
 from pydantic import BaseModel, EmailStr, conint
@@ -42,7 +43,7 @@ class CreateUser(BaseModel):
     email: EmailStr
     password: str  
 
-class UserCreatedResponse(BaseModel):
+class UserCreated(BaseModel):
     id: int
     email: EmailStr
     created_at: datetime
@@ -50,7 +51,7 @@ class UserCreatedResponse(BaseModel):
         orm_mode = True
 
 class UserFoundResponse(BaseModel):
-    id: str
+    id: int
     class Config:
         orm_mode = True
 
